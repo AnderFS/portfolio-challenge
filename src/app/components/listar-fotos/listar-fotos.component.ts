@@ -25,7 +25,6 @@ export class ListarFotosComponent implements OnInit {
   public foundPhotos: Photos[] = [];
   public searchKey: string = "";
   public itemsPerPage: number[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
-  public selectedItemsPerPage: number = 10;
   public noData: boolean = false;
 
   public config: PaginationInstance = {
@@ -40,23 +39,16 @@ export class ListarFotosComponent implements OnInit {
 
   public searchPhotos() {
     this.noData = false;
-    
+
     this.foundPhotos = this.allPhotos.filter(p => {
       let result =
         (this.searchKey === "" || p.title.toLowerCase().indexOf(this.searchKey.toLowerCase()) !== -1)//Search filter
         || (this.searchKey === "" || p.id.toString() == this.searchKey)
-      // || (this.selectedType == d.Type) 
-      //console.log(JSON.stringify(this.DWCatalogsForTable));
-      //console.log(d.Status);
-      // console.log("RESULT: " + result);
       return result;
     });
 
-    if(this.foundPhotos.length == 0)
+    if (this.foundPhotos.length == 0)
       this.noData = true;
-
-    console.log(this.foundPhotos.length);
-    // console.log(JSON.stringify(this.foundPhotos));
   }
 
   public getPhotos() {
@@ -65,15 +57,11 @@ export class ListarFotosComponent implements OnInit {
         if (data != null || data != undefined) {
           this.allPhotos = data;
           this.foundPhotos = this.allPhotos;
-          // this.filterPhotosPerPage();
         }
-        // console.log(this.allPhotos);
-        console.log("LENGTH: " + this.allPhotos.length);
       });
   }
 
   public onPageChange(number: number) {
-    console.log('change to page', number);
     this.config.currentPage = number;
   }
 
@@ -81,27 +69,22 @@ export class ListarFotosComponent implements OnInit {
     // this.config.itemsPerPage = number;
   }
 
-  public showPhoto(photoId){
+  public showPhoto(photoId) {
     let selectedPhoto = this.allPhotos.find(ph => ph.id == photoId);
-    
-    if(selectedPhoto == undefined || selectedPhoto == null){
-      console.log("There is no photo selected!");
+
+    if (selectedPhoto == undefined || selectedPhoto == null) {
       return;
     }
-      
-    console.log("Selected photo: " + selectedPhoto.id);  
-
 
     let navigationExtras: NavigationExtras = {
       queryParams: {
-          "id": selectedPhoto.id,
-          "albumId": selectedPhoto.albumId,
-          "thumbnailUlr": selectedPhoto.thumbnailUlr,
-          "title": selectedPhoto.title,
-          "url": selectedPhoto.url,
+        "id": selectedPhoto.id,
+        "albumId": selectedPhoto.albumId,
+        "thumbnailUlr": selectedPhoto.thumbnailUlr,
+        "title": selectedPhoto.title,
+        "url": selectedPhoto.url,
       }
-  };
-
+    };
     this.router.navigate(['/show-photo'], navigationExtras);
   }
 

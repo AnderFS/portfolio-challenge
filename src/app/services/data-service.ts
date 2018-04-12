@@ -15,23 +15,13 @@ export class DataService {
     constructor(private http: Http) {
     }
 
-    // constructor(private httpClient: HttpClient){}
-
     public getPhotos(): Observable<Photos[]> {
-        // return this.http
-        //     .get(this.photosUrl)
-        //     .map((response: Response) => {
-        //         return <Photos[]>response.json();
-        //     })
-        //     .catch(this.handleError);
-
         return this.http.get(this.photosUrl)
             .map((response: Response) => response.json())
             .catch(this.handleError);
-        // return this.httpClient.get<Photos[]>(this.photosUrl);
     }
 
-    public showPhoto(selectedPhoto: Photos){
+    public showPhoto(selectedPhoto: Photos) {
         this.selectedPhoto = selectedPhoto;
     }
 
