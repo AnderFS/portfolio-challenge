@@ -1,0 +1,34 @@
+<header>
+  <h1>
+    header
+    <div>
+      <input [(ngModel)]="searchKey" type="search" class="input-group-field" placeholder="Buscar por titulo o Id" (ngModelChange)="searchPhotos()">
+    </div>
+  </h1>
+</header>
+<section>
+  < section>
+    <article>
+      <div class="two-columns" *ngFor="let photo of foundPhotos | paginate: config">
+        <div>
+          <img [src]="photo.thumbnailUrl" style="cursor: pointer" (click)="showPhoto(photo.id)" routerLinkActive="active" />
+        </div>
+        <div>
+          <label class="text-center" title="{{photo.title}}" style="width: 15px; cursor: pointer;" (click)="showPhoto(photo.id)">{{photo.title.substring(0,40)}}...</label>
+        </div>
+      </div>
+    </article>
+    <div class="pagination">
+      <pagination-controls [id]="config.id" (pageChange)="onPageChange($event)"></pagination-controls>
+    </div>
+
+    <div>
+      Fotos por pagina:
+      <select [(ngModel)]="config.itemsPerPage" (ngModelChange)="changeItemsPerPage(item)">
+        <option *ngFor="let item of itemsPerPage">{{item}}</option>
+      </select>
+    </div>
+</section>
+<footer>
+  < footer>
+</footer>
