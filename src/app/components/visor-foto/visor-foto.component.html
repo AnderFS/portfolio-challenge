@@ -2,20 +2,21 @@
   <h1>
 
     <div>
-      {{photo.albumId}}
+      Album ID: {{photo.albumId}}
     </div>
   </h1>
 </header>
 <section>
-  < section>
-    <article>
-      <div class="photo-title">{{photo.title}}</div>
-      <div class="photo-layout"><img [src]="photo.url"></div>
-    </article>
-    <div>
-      <button type="button" (click)="backToPhotos()">Volver</button>
+  <article>
+    <div class="photo-title">{{photo.title}}</div>
+    <div class="photo-layout">
+      <img [src]="photo.url">
     </div>
+  </article>
+  <div>
+    <button type="button" (click)="backToPhotos()">Volver</button>
+  </div>
 </section>
 <footer>
-  < footer>
+  Realizado por Ander Fernández Sánchez
 </footer>

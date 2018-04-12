@@ -4,6 +4,7 @@ import { PaginationInstance } from "../../../../node_modules/ngx-pagination/dist
 import { Router, NavigationExtras, ParamMap } from '@angular/router';
 
 import * as $ from 'jquery';
+
 //Service
 import { DataService } from '../../services/data-service';
 
@@ -25,6 +26,7 @@ export class ListarFotosComponent implements OnInit {
   public searchKey: string = "";
   public itemsPerPage: number[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
   public selectedItemsPerPage: number = 10;
+  public noData: boolean = false;
 
   public config: PaginationInstance = {
     id: 'advanced',
@@ -37,7 +39,8 @@ export class ListarFotosComponent implements OnInit {
   }
 
   public searchPhotos() {
-    $(".two-columns").css('width', '50%');
+    this.noData = false;
+    
     this.foundPhotos = this.allPhotos.filter(p => {
       let result =
         (this.searchKey === "" || p.title.toLowerCase().indexOf(this.searchKey.toLowerCase()) !== -1)//Search filter
@@ -48,13 +51,12 @@ export class ListarFotosComponent implements OnInit {
       // console.log("RESULT: " + result);
       return result;
     });
-    if(this.foundPhotos.length <= 1){
-      $(".two-columns").css('width', '100%');
-    }else{
-      $(".two-columns").css('width', '50%');
-    }
 
-    console.log(JSON.stringify(this.foundPhotos));
+    if(this.foundPhotos.length == 0)
+      this.noData = true;
+
+    console.log(this.foundPhotos.length);
+    // console.log(JSON.stringify(this.foundPhotos));
   }
 
   public getPhotos() {
@@ -65,7 +67,7 @@ export class ListarFotosComponent implements OnInit {
           this.foundPhotos = this.allPhotos;
           // this.filterPhotosPerPage();
         }
-        console.log(this.allPhotos);
+        // console.log(this.allPhotos);
         console.log("LENGTH: " + this.allPhotos.length);
       });
   }

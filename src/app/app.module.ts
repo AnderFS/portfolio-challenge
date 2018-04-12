@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing-module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { ListarFotosComponent } from './components/listar-fotos/listar-fotos.com
     HttpModule,
     FormsModule,
     NgxPaginationModule,
+    AngularFontAwesomeModule,
     AppRoutingModule
     // HttpClientModule
   ],

@@ -6,7 +6,7 @@ import { ListarFotosComponent } from './components/listar-fotos/listar-fotos.com
 
 const routes: Routes = [
     { path: 'show-photo', component: VisorFotoComponent },
-    { path: '**', redirectTo: 'listar-fotos',  pathMatch: 'full' },
+    { path: '**', redirectTo: 'list-photos',  pathMatch: 'full' },
     { path: 'list-photos', component: ListarFotosComponent },
    ];
 
