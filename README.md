@@ -1,3 +1,6 @@
+# Comentario para la correcta instalación de la aplicación:
+He utilizado varias librerías de terceros (Jquery, ngx-pagination, font-awesome...) asi que para su correcta instalación se debería realizar un npm install antes del ng serve --open.
+
 # PortfolioChallenge
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
