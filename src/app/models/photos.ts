@@ -1,4 +1,4 @@
-export class  Photos {
+export class Photos {
     albumId: number;
     id: number;
     title: string;

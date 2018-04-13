@@ -11,27 +11,27 @@ import { PathLocationStrategy } from '@angular/common';
   templateUrl: './visor-foto.component.html',
   styleUrls: ['./visor-foto.component.sass']
 })
-export class VisorFotoComponent implements OnInit  {
+export class VisorFotoComponent implements OnInit {
 
-  constructor(private dataService: DataService, 
-  private router: Router,
-  private route: ActivatedRoute) { }
+  constructor(private dataService: DataService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   public photo: Photos = null;
 
   ngOnInit() {
     this.photo = new Photos();
     this.route.queryParams.subscribe(params => {
-          this.photo.id = params["id"];
-          this.photo.albumId = params["albumId"];
-          this.photo.title = params["title"];
-          this.photo.url = params["url"];
-          console.log(this.photo);
-      });
-    }
+      this.photo.id = params["id"];
+      this.photo.albumId = params["albumId"];
+      this.photo.title = params["title"];
+      this.photo.url = params["url"];
+      console.log(this.photo);
+    });
+  }
 
-    public backToPhotos(){
-      this.router.navigate(["/list-photos"]);
-    }
+  public backToPhotos() {
+    this.router.navigate(["/list-photos"]);
+  }
 
 }
