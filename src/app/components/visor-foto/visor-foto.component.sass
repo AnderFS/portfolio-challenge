@@ -1,10 +1,19 @@
+//Media queries approach in SASS (vars)
+$break-small: 320px;
+$break-mid: 640px;
+$break-lm: 840px;
+$break-large: 1400px; 
+
 *
   box-sizing: border-box
   font-family: 'Metrophobic', Arial, serif; font-weight: 400
-
+  
 body
   background-color: #323232
   padding: 50px
+
+.container
+  min-width: 640px  
 
 header,
 section,
@@ -46,14 +55,28 @@ section article
   font-size: 1.2em
   color: white !important
 
-.two-columns
-  float: left
-  display: table-column
-  width: 50%
-  margin-bottom: 25px
+.photo-viewer
+  margin-top: 2%
+  width: 100%
 
-.pagination
-  margin-top: 20px
+  @media screen and (max-width: $break-small) 
+    width: 100% 
+    // margin-left: 39%
+    margin-top: 2%
+    
+  @media screen and (min-width: $break-mid) 
+    width: 100% 
+    // margin-left: 39%
+    margin-top: 2%
+  
+  @media screen and (min-width: $break-lm) 
+    width: 100%
+    // margin-left: 39%
+    margin-top: 2%
+
+  @media screen and (min-width: $break-large)     
+    width: 100%
+    margin-top: 2%  
 
 footer
   clear: both

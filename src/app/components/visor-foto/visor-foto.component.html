@@ -1,19 +1,21 @@
-<header>
-  <h1 class="white">
+<div class="container">
+  <header>
+    <h1 class="white">
       Album ID: {{photo.albumId}}
-  </h1>
-</header>
-<section>
-  <article>
-    <div class="photo-title">{{photo.title}}</div>
-    <div class="photo-layout">
-      <img [src]="photo.url">
+    </h1>
+  </header>
+  <section>
+    <article>
+      <div class="photo-title">{{photo.title}}</div>
+      <div class="photo-layout">
+        <img class="photo-viewer" [src]="photo.url">
+      </div>
+    </article>
+    <div>
+      <button type="button" (click)="backToPhotos()">Volver</button>
     </div>
-  </article>
-  <div>
-    <button type="button" (click)="backToPhotos()">Volver</button>
-  </div>
-</section>
-<footer>
-  <p class="white">Realizado por Ander Fernández Sánchez</p>
-</footer>
+  </section>
+  <footer>
+    <p class="white">Realizado por Ander Fernández Sánchez</p>
+  </footer>
+</div>

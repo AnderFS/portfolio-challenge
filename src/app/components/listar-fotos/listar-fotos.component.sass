@@ -1,3 +1,8 @@
+//Media queries approach in SASS (vars)
+$break-small: 320px;
+$break-mid: 640px;
+$break-lm: 840px;
+$break-large: 1400px;   
 
 *
   box-sizing: border-box
@@ -7,6 +12,8 @@
 body
   padding: 50px
 
+.container
+  min-width: 640px
 
 header,
 section,
@@ -50,19 +57,73 @@ section article
   color: white !important
 
 .search-box-container
-  float: right
+
+  width: 28%
   background-color: white
-  width: 13%  
+  margin-left: 39%
+  margin-top: 2%
+
+  @media screen and (max-width: $break-small) 
+    background-color: white
+    width: 28% 
+    margin-left: 39%
+    margin-top: 2%
+    
+  @media screen and (min-width: $break-mid) 
+    background-color: white
+    width: 28% 
+    margin-left: 39%
+    margin-top: 2%
+  
+  @media screen and (min-width: $break-lm) 
+    background-color: white
+    width: 18%
+    margin-left: 39%
+    margin-top: 2%
+
+  @media screen and (min-width: $break-large)     
+    float: right
+    background-color: white
+    width: 13%   
 
 .input-group-field
   border: 0px
   width: 82%
 
 .two-columns
+  font-size: 0.6em !important 
+  width: 100%
   float: left
   display: table-column
-  width: 50%
-  margin-bottom: 25px
+  margin-bottom: 25px 
+  
+  @media screen and (max-width: $break-small)
+    font-size: 0.6em !important 
+    width: 100%
+    float: left
+    display: table-column
+    margin-bottom: 25px 
+  
+  @media screen and (min-width: $break-mid) 
+    font-size: 0.7em !important
+    width: 100%
+    float: left
+    display: table-column
+    margin-bottom: 25px
+
+  @media screen and (min-width: $break-lm) 
+    font-size: 0.7em !important
+    width: 50%
+    float: left
+    display: table-column
+    margin-bottom: 25px
+
+  @media screen and (min-width: $break-large)     
+    float: left
+    display: table-column
+    width: 50%
+    margin-bottom: 25px
+    font-size: 1.2em !important
 
 .oneColumn
   float: left
@@ -80,4 +141,7 @@ footer
   clear: both
 
 .white
-  color: white !important   
+  color: white !important  
+
+
+

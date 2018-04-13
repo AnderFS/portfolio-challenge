@@ -1,39 +1,41 @@
-<header>
-  <div>
-    <h2 class="white">
-      Portfolio de Imágenes
-    </h2>
-  </div>
-  <div class="search-box-container">
-    <input [(ngModel)]="searchKey" type="search" class="input-group-field" placeholder="Buscar por titulo o Id" (ngModelChange)="searchPhotos()">
-    <fa name="search"></fa>
-  </div>
-</header>
-<section>
-  <article>
-    <div *ngIf="noData">
-      <p>¡No hay imágenes con ese titulo o Id! Prueba con otro.</p>
+<div class="container">
+  <header>
+    <div>
+      <h2 class="white">
+        Portfolio de Imágenes
+      </h2>
     </div>
-    <div class="two-columns" [class.oneColumn]="foundPhotos.length == 1" *ngFor="let photo of foundPhotos | paginate: config">
-      <div *ngIf="!noData">
-        <img [src]="photo.thumbnailUrl" style="cursor: pointer" (click)="showPhoto(photo.id)" routerLinkActive="active" />
-      </div>
-      <div *ngIf="!noData">
-        <label class="text-center" title="{{photo.title}}" style="width: 15px; cursor: pointer;" (click)="showPhoto(photo.id)">{{photo.title.substring(0,40)}}...</label>
-      </div>
+    <div class="search-box-container">
+      <input [(ngModel)]="searchKey" type="search" class="input-group-field" placeholder="Buscar por titulo o Id" (ngModelChange)="searchPhotos()">
+      <fa name="search"></fa>
     </div>
-  </article>
-  <div class="pagination" [class.hidden]="foundPhotos.length <= 1">
-    <pagination-controls [id]="config.id" (pageChange)="onPageChange($event)"></pagination-controls>
-  </div>
+  </header>
+  <section>
+    <article>
+      <div *ngIf="noData">
+        <p>¡No hay imágenes con ese titulo o Id! Prueba con otro.</p>
+      </div>
+      <div class="two-columns" [class.oneColumn]="foundPhotos.length == 1" *ngFor="let photo of foundPhotos | paginate: config">
+        <div *ngIf="!noData">
+          <img [src]="photo.thumbnailUrl" style="cursor: pointer" (click)="showPhoto(photo.id)" routerLinkActive="active" />
+        </div>
+        <div *ngIf="!noData">
+          <label class="text-center" title="{{photo.title}}" style="width: 15px; cursor: pointer;" (click)="showPhoto(photo.id)">{{photo.title.substring(0,40)}}...</label>
+        </div>
+      </div>
+    </article>
+    <div class="pagination" [class.hidden]="foundPhotos.length <= 1">
+      <pagination-controls [id]="config.id" (pageChange)="onPageChange($event)"></pagination-controls>
+    </div>
 
-  <div class="items-selector" [class.hidden]="foundPhotos.length <= 1">
-    Fotos por página:
-    <select [(ngModel)]="config.itemsPerPage" (ngModelChange)="changeItemsPerPage(item)">
-      <option *ngFor="let item of itemsPerPage">{{item}}</option>
-    </select>
-  </div>
-</section>
-<footer>
-  <p class="white">Realizado por Ander Fernández Sánchez</p>
-</footer>
+    <div class="items-selector" [class.hidden]="foundPhotos.length <= 1">
+      Fotos por página:
+      <select [(ngModel)]="config.itemsPerPage" (ngModelChange)="changeItemsPerPage(item)">
+        <option *ngFor="let item of itemsPerPage">{{item}}</option>
+      </select>
+    </div>
+  </section>
+  <footer>
+    <p class="white">Realizado por Ander Fernández Sánchez</p>
+  </footer>
+</div>
